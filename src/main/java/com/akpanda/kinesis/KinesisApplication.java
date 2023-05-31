@@ -1,6 +1,7 @@
 package com.akpanda.kinesis;
 
 import com.akpanda.kinesis.config.KinesisClient;
+import com.akpanda.kinesis.producer.kpl.KinesisKPLProducer;
 import com.akpanda.kinesis.producer.sdk.KinesisSDKProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,9 @@ public class KinesisApplication implements CommandLineRunner {
 
 	@Autowired
 	KinesisSDKProducer kinesisSDKProducer;
+
+	@Autowired
+	KinesisKPLProducer kinesisKPLProducer;
 	public static void main(String[] args) {
 		SpringApplication.run(KinesisApplication.class, args);
 
@@ -33,5 +37,17 @@ public class KinesisApplication implements CommandLineRunner {
 		LOG.info("Starting kinesis publisher all at once");
 		kinesisSDKProducer.publishToStreamAllAtOnce(streamName);
 		LOG.info("Stopping kinesis publisher all at once");
+
+		LOG.info("Starting KPL unblocked");
+		kinesisKPLProducer.kplProducerUnblockinhg(streamName);
+		LOG.info("Stopping KPL unblocked");
+
+		LOG.info("Starting KPL blocked");
+		kinesisKPLProducer.kplProducerBlocked(streamName);
+		LOG.info("Stopping KPL blocked");
+
+		LOG.info("Starting KPL async unblocked with call back");
+		kinesisKPLProducer.kplProducerAsync(streamName);
+		LOG.info("Stopping KPL async unblocked with call back");
 	}
 }

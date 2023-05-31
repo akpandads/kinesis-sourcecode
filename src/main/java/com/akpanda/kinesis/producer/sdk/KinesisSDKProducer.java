@@ -27,7 +27,7 @@ public class KinesisSDKProducer {
             for(int i =0;i<3;i++){
                 String partitionKey = "partitionKey1";
                 PutRecordRequest putRecordRequest = new PutRecordRequest();;
-                String geoLocationJson = (new GeoLocation()).geoLocationToJson();
+                String geoLocationJson = (new GeoLocation("putRecordOneByOne")).geoLocationToJson();
                 putRecordRequest.setStreamName(streamName);
                 putRecordRequest.setData(ByteBuffer.wrap(geoLocationJson.getBytes()));
                 putRecordRequest.setPartitionKey(partitionKey);
@@ -48,7 +48,7 @@ public class KinesisSDKProducer {
             for(int i =0;i<30;i++){
                 String partitionKey = "partitionKey1";
                 PutRecordsRequestEntry putRecordsRequestEntry = new PutRecordsRequestEntry();;
-                String virLocationToJson = (new VirtualLocation()).virLocationToJson();
+                String virLocationToJson = (new VirtualLocation("putRecordsAllAtOnce")).virLocationToJson();
                 putRecordsRequestEntry.setData(ByteBuffer.wrap(virLocationToJson.getBytes()));
                 putRecordsRequestEntry.setPartitionKey(partitionKey);
                 putRecordsRequestEntryList.add(putRecordsRequestEntry);

@@ -34,10 +34,12 @@
 			<artifactId>aws-java-sdk-core</artifactId>
 			<version>1.12.477</version>
 		</dependency>
-
-
-
-
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/amazon-kinesis-producer -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>amazon-kinesis-producer</artifactId>
+			<version>0.15.7</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

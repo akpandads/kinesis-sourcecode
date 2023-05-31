@@ -6,6 +6,8 @@ public class VirtualLocation {
     private String vlat;
     private String vlong;
 
+    private String publisherSource;
+
     private static Gson gson = new Gson();
 
     public String getVlat() {
@@ -23,9 +25,10 @@ public class VirtualLocation {
     public void setVlong(String vlong) {
         this.vlong = vlong;
     }
-    public VirtualLocation(){
+    public VirtualLocation(String publisherSource){
         this.vlong = String.valueOf(Math.random() * Math.PI * 2);
         this.vlat = String.valueOf(Math.acos(Math.random() * 2 - 1));
+        this.publisherSource = publisherSource;
     }
 
     public String virLocationToJson(){
